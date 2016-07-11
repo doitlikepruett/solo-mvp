@@ -1,28 +1,39 @@
 <!DOCTYPE html>
-<html ng-app>
+<html ng-app='myApp'>
 <head>
   <title>Google Suggestion Game</title>
   <!-- <link rel="stylesheet" href="style.css"> -->
    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular.min.js"></script>
 </head>
-<body>
+<body ng-controller="mainController">
   <h1>Google Suggestion Game!</h1>
 
-  <div class='main'>
-    <section class='searchQuery' ng-init="suggestionResults=[]">
+  <div class='main' >
+
+    <h2>Score: {{score}}</h2>
+
+    <section class='searchQuery'>
       <input type="text" placeholder="Search google..." ng-model="newQuery">
       <button ng-click='loadResults(newQuery)'>Send Query</button>
     </section>
 
+     <section class='guessArea'>
+      <input type="text" placeholder="Put in your guess!" ng-model="guessText">
+      <button ng-click='guessCompare(guessText)'>Submit Guess</button>
+    </section>
+
   </div>
 
-<script>
-  var app = angular.module('myApp', []);
-  app.controller('mainController', function($scope){
+<!-- <script>
+  var app = angular.module('myApp', ['suggestion.app']);
+  app.controller('mainController', ['$scope', function($scope){
 
-    $scope.suggestionResults = Query.loadResults;
-  })
+    // $scope.loadResults = Query.loadResults;
+    $scope.loadResults = console.log('working!');
+    $scope.score = 0
+  }])
+
 </script>
-</body>
+ --></body>
 
 </html>
