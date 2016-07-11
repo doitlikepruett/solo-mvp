@@ -1,0 +1,10 @@
+{
+  "name": "google-suggestion-game",
+  "version": "1.0.0",
+  "description": "A fun suggestion game using google",
+  "author": "Mark Pruett",
+  "dependencies": {
+    "body-parser": "^1.4.3",
+    "express": "^4.4.5"
+  }
+}

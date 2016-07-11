@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html ng-app>
+<head>
+  <title>Google Suggestion Game</title>
+  <!-- <link rel="stylesheet" href="style.css"> -->
+   <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular.min.js"></script>
+</head>
+<body>
+  <h1>Google Suggestion Game!</h1>
+
+  <div class='main'>
+    <section class='searchQuery' ng-init="suggestionResults=[]">
+      <input type="text" placeholder="Search google..." ng-model="newQuery">
+      <button ng-click='loadQuery(newQuery)'>Send Query</button>
+    </section>
+
+  </div>
+
+<script>
+  var app = angular.module('myApp', []);
+  app.controller('mainController', function($scope){
+
+    $scope.loadQuery = Query.loadQuery;
+    console.log($scope.loadQuery);
+
+  })
+
+  app.factory('Query', function($http){
+
+    var loadQuery = function(text){
+      return $http({
+        method: 'GET',
+        url: "http://suggestqueries.google.com/complete/search?client=chrome&q=hello"
+      }).then(function(resp){
+        return resp;
+      }).catch(function(error){
+        console.log(error);
+      })
+    }
+
+  });
+</script>
+</body>
+
+</html>
