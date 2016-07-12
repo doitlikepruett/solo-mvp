@@ -21,21 +21,34 @@ app.factory('Query', function($http){
   var returnedResults;
 
   var loadResults = function(newQuery){
-      newQuery = newQuery.split(' ').join('_');
-      console.log(newQuery);
-       $http({ //does this need a return before $http?
-        method: 'GET',
-        url: "http://suggestqueries.google.com/complete/search?client=chrome&q=" + newQuery,
-        headers: {
-          'Content-Type': "text/javascript"
-        }
 
-      }).then(function(resp){
-        console.log("Success from loadResults!");
-        returnedResults = resp.body;
-      }).catch(function(error){
-        console.log(error);
-      })
+      newQuery = newQuery.split(' ').join('_');
+      
+      var url = "http://suggestqueries.google.com/complete/search?client=chrome&q=" + newQuery + "&callback=JSON_CALLBACK";
+
+      $http.jsonp(url)
+          .success(function(data){
+              returnedResults = data;
+              console.log(returnedResults);
+          })
+          .error(function(data){
+            console.log("loadResults REQUEST ERROR", data)
+          });     
+
+      //  $http({ 
+      //   method: 'JSONP',
+      //   url: "http://suggestqueries.google.com/complete/search?client=chrome&q=" + newQuery,
+      //   crossDomain: true,
+      //   "headers": {
+      //   "cache-control": "no-cache"
+      //   }
+
+      // }).then(function(resp){
+      //   console.log("Success from loadResults!");
+      //   returnedResults = resp.body;
+      // }).catch(function(error){
+      //   console.log(error);
+      // })
   };
 
 
