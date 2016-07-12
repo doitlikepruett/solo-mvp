@@ -42,7 +42,7 @@ app.factory('Query', function($http){
   var guessCompare = function(guessText){
     for (var i = 0; i<returnedResults[1].length; i++){
       if (returnedResults[1][i].slice(-guessText.length) === guessText){
-          var points = 10 - i;
+          var points = 20 - i;
           this.score += points;
           this.message = "Hooray! You guessed number " + (i+1) + " in the list! \nYour score increased by " + points;
           return;
