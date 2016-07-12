@@ -1,11 +1,42 @@
 <!DOCTYPE html>
 <html ng-app='myApp'>
+<style>
+  
+
+  h1 {
+    margin: auto;
+    width: 50%;
+    border: 3px black;
+    padding: 10px;
+    text-align: center;
+  }
+  div {
+    border-radius: 5px;
+    background-color: #f2f2f2;
+    padding: 20px;
+  }
+  input[type=text], select {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    height:50px;
+    font-size:14pt;
+}
+button:hover {
+    background-color: #45a049;
+}
+
+</style>
 <head>
   <title>Google Suggestion Game</title>
   <!-- <link rel="stylesheet" href="style.css"> -->
    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular.min.js"></script>
    <script src="app/app.js"></script>
-   <!-- <script src="controller/mainController.js"></script> -->
+   
 
 </head>
 <body ng-controller="MainController">
@@ -18,19 +49,17 @@
     <section class='searchQuery'>
       <input type="text" placeholder="Search google..." ng-model="newQuery">
       <button ng-click='loadResults(newQuery)'>Send Query</button>
-      <p>Your query is "{{newQuery}}"</p>
+      
     </section>
 
      <section class='guessArea'>
       <input type="text" placeholder="Put in your guess!" ng-model="guessText">
       <button ng-click='guessCompare(guessText)'>Submit Guess</button>
     </section>
-
+    <h2>{{message}}</h2>
   </div>
 
-<script>
 
-</script>
 </body>
 
 </html>

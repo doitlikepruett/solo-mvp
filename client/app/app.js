@@ -11,6 +11,8 @@ app.controller('MainController', function($scope, Query){
     $scope.loadResults = Query.loadResults;
 
     $scope.guessCompare = Query.guessCompare;
+
+    $scope.message = '';
     
   });
 
@@ -34,21 +36,6 @@ app.factory('Query', function($http){
           .error(function(data){
             console.log("loadResults REQUEST ERROR", data)
           });     
-
-      //  $http({ 
-      //   method: 'JSONP',
-      //   url: "http://suggestqueries.google.com/complete/search?client=chrome&q=" + newQuery,
-      //   crossDomain: true,
-      //   "headers": {
-      //   "cache-control": "no-cache"
-      //   }
-
-      // }).then(function(resp){
-      //   console.log("Success from loadResults!");
-      //   returnedResults = resp.body;
-      // }).catch(function(error){
-      //   console.log(error);
-      // })
   };
 
 
@@ -56,10 +43,13 @@ app.factory('Query', function($http){
     for (var i = 0; i<returnedResults[1].length; i++){
       if (returnedResults[1][i].slice(-guessText.length) === guessText){
           var points = 10 - i;
-          console.log("You earned " + points + " points!" );
+          this.score += points;
+          this.message = "Hooray! You guessed number " + (i+1) + " in the list! \nYour score increased by " + points;
+          return;
       }
+      
     }
-    console.log("Too bad, try again!");
+    this.message = "Sorry friendo, guess again!";
   };
 
 
