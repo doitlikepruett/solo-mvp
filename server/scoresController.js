@@ -1,15 +1,17 @@
-var stats = require('./scoresModel.js');
+var Stats = require('./scoresModel.js');
 
 var Q = require('q');
 
-var getAllPlayerData = Q.nbind(stats.find, stats);
-var findUser = Q.nbind(stats.findOne, stats);
-var createUser = Q.nbind(stats.create, stats);
-var updateScore = Q.nbind(stats.findOneAndUpdate, stats);
+var getAllPlayerData = Q.nbind(Stats.find, Stats);
+var findUser = Q.nbind(Stats.findOne, Stats);
+var createUser = Q.nbind(Stats.create, Stats);
+var updateScore = Q.nbind(Stats.findOneAndUpdate, Stats);
 
 var allStats = function(req, res, next){
+  console.log("Made it to the allStats!")
   getAllPlayerData({})
     .then(function(data){
+      console.log('hello from allStats', data)
       res.json(data);
     })
     .fail(function(error){
@@ -19,8 +21,7 @@ var allStats = function(req, res, next){
 };
 
 var addStatsToDB = function(req, res, next){
-  // console.log("22222 next is ", next)
-  console.log(req.body, '11111');
+  console.log(req.body, 'Post request made it to the server');
   var player = req.body.player;
   var score = req.body.score;
 
@@ -40,7 +41,7 @@ var addStatsToDB = function(req, res, next){
         })
       }
     }).then(function(user){
-      res.send(201);
+      res.sendStatus(201);
     }).fail(function(error){
       res.send(500)
       console.log("Server Post Request Error", error)

@@ -22,7 +22,7 @@ var bodyParser = require('body-parser');
 
 module.exports = function (app, express) {
   app.use(morgan('dev'));
-  app.use(bodyParser.urlencoded({extended: true})); // #I don't think I need this
+  // app.use(bodyParser.urlencoded({extended: true})); // #I don't think I need this
   app.use(bodyParser.json());
   app.use(express.static(__dirname + '/../client'));
 };
@@ -30,4 +30,4 @@ module.exports = function (app, express) {
 
 
 
-//do I need this?
+//do I need this middleware file?

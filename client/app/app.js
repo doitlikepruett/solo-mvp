@@ -1,4 +1,4 @@
-var enteredPlayerName = prompt('Enter a username');
+var enteredPlayerName = prompt('Enter a username to play this game');
 
 var app = angular.module('myApp', [])
 
@@ -20,6 +20,10 @@ app.controller('MainController', function($scope, Query){
     $scope.player = enteredPlayerName;
 
     $scope.addPlayer = Query.addPlayer;
+
+    $scope.allStats;
+
+    $scope.getScores = Query.getScores;
     
   });
 
@@ -63,14 +67,23 @@ app.factory('Query', function($http){
   };
 
     var getScores = function(){
+      // return $http.jsonp('/allStats')
+      // .success(function(data, status, headers, config){
+      //   console.log(data, "Hooray!")
+      // })
+      // .error(function(data, status, headers, config){
+      //   console.log("Much Fail")
+      // })
+
     return $http({ //#return statement needed here?
       method: "GET",
       url: '/allStats'
     }).then(function(resp){
-      console.log(resp);
+      this.allStats = resp.data
+      console.log(resp.data);
       return resp.data;
     }).catch(function(err){
-      console.log("There was an error getting the all the scores ", err);
+      console.log("There was an error getting all the scores ", err);
     })
   };
 

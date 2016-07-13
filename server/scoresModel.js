@@ -13,4 +13,4 @@ var ScoresSchema = new mongoose.Schema({
 });
 
 
-module.exports = mongoose.model('stats', ScoresSchema);
+module.exports = mongoose.model('Stats', ScoresSchema);
