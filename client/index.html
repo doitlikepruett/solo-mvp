@@ -29,6 +29,29 @@
 button:hover {
     background-color: #45a049;
 }
+.animate-show {
+  line-height: 20px;
+  opacity: 1;
+  padding: 10px;
+  border: 1px solid black;
+  background: white;
+}
+
+.animate-show.ng-hide-add, .animate-show.ng-hide-remove {
+  transition: all linear 0.5s;
+}
+
+.animate-show.ng-hide {
+  line-height: 0;
+  opacity: 0;
+  padding: 0 10px;
+}
+
+.check-element {
+  padding: 10px;
+  border: 1px solid black;
+  background: white;
+}
 
 </style>
 <head>
@@ -58,7 +81,16 @@ button:hover {
     </section>
     <h2>{{message}}</h2>
   </div>
-
+ <!--  Show All Results: <input type="checkbox" ng-model="checked" aria-label="Toggle ngHide"><br/>
+<div>
+  <div class="check-element animate-show" ng-show="checked">
+    <span ng-repeat="item in returnedResults[1]"></span>
+  </div>
+</div>
+<div>
+  <div class="check-element animate-show" ng-hide="checked">
+  </div>
+</div> -->
 
 </body>
 

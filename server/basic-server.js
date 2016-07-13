@@ -1,7 +1,14 @@
 var express = require('express');
-var cors = require('express-cors');
+var mongoose = require('mongoose');
 
 var app = express();
+
+//connect to mongo db named 'suggestionDB'
+mongoose.connect('mongodb://localhost/suggestionDB');
+
+//add middleware and routing
+require('./middleware.js')(app, express);
+require('./routes.js')(app, express);
 
 var port = process.env.PORT || 5555;
 
