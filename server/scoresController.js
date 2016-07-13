@@ -19,6 +19,7 @@ var allStats = function(req, res, next){
 };
 
 var addStatsToDB = function(req, res, next){
+  // console.log("22222 next is ", next)
   console.log(req.body, '11111');
   var player = req.body.player;
   var score = req.body.score;
@@ -38,8 +39,11 @@ var addStatsToDB = function(req, res, next){
           console.log("This is the updated record", updatedRecord);
         })
       }
+    }).then(function(user){
+      res.send(201);
     }).fail(function(error){
-      console.log(error)
+      res.send(500)
+      console.log("Server Post Request Error", error)
     })
 
 }
