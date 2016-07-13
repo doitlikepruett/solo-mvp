@@ -19,7 +19,7 @@ app.controller('MainController', function($scope, Query){
 
     $scope.player = enteredPlayerName;
 
-    $scope.addPlayer = Scores.addPlayer;
+    $scope.addPlayer = Query.addPlayer;
     
   });
 
@@ -62,21 +62,12 @@ app.factory('Query', function($http){
     this.message = "Sorry friendo, guess again!";
   };
 
-
-  return {
-    returnedResults: returnedResults,
-    loadResults: loadResults,
-    guessCompare: guessCompare,
-    allResults: allResults
-  }
-})
-
-app.factory('Scores', function($http){
-  var getScores = function(){
+    var getScores = function(){
     return $http({ //#return statement needed here?
       method: "GET",
       url: '/allStats'
     }).then(function(resp){
+      console.log(resp);
       return resp.data;
     }).catch(function(err){
       console.log("There was an error getting the all the scores ", err);
@@ -92,19 +83,48 @@ app.factory('Scores', function($http){
       console.log('Post request sent successfully');
       return resp;
     }).catch(function(err){
-      console.log("Error sending post request ", error);
+      console.log("Error sending post request ", err);
     })
-  };  
-
-return {
-  getScores: getScores,
-  addPlayer: addPlayer
-}
+  }; 
 
 
+  return {
+    returnedResults: returnedResults,
+    loadResults: loadResults,
+    guessCompare: guessCompare,
+    allResults: allResults,
+    getScores: getScores,
+    addPlayer: addPlayer
+  }
+})
 
+// app.factory('Scores', function($http){
+//   var getScores = function(){
+//     return $http({ //#return statement needed here?
+//       method: "GET",
+//       url: '/allStats'
+//     }).then(function(resp){
+//       return resp.data;
+//     }).catch(function(err){
+//       console.log("There was an error getting the all the scores ", err);
+//     })
+//   };
 
+//   var addPlayer = function(playerInfo){
+//     return $http({ //#return statement needed here?
+//       method: "POST",
+//       url: '/postScore',
+//       data: playerInfo
+//     }).then(function(resp){
+//       console.log('Post request sent successfully');
+//       return resp;
+//     }).catch(function(err){
+//       console.log("Error sending post request ", error);
+//     })
+//   };  
 
-
-
-});
+// return {
+//   getScores: getScores,
+//   addPlayer: addPlayer
+// }
+// });

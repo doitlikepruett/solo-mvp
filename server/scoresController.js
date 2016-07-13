@@ -19,6 +19,7 @@ var allStats = function(req, res, next){
 };
 
 var addStatsToDB = function(req, res, next){
+  console.log(req.body, '11111');
   var player = req.body.player;
   var score = req.body.score;
 
@@ -37,7 +38,7 @@ var addStatsToDB = function(req, res, next){
           console.log("This is the updated record", updatedRecord);
         })
       }
-    }).catch(function(error){
+    }).fail(function(error){
       console.log(error)
     })
 
