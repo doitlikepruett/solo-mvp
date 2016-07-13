@@ -42,3 +42,8 @@ var addStatsToDB = function(req, res, next){
     })
 
 }
+
+module.exports = {
+  allStats: allStats,
+  addStatsToDB: addStatsToDB
+}

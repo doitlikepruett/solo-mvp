@@ -1,3 +1,4 @@
+var enteredPlayerName = prompt('Enter a username');
 
 var app = angular.module('myApp', [])
 
@@ -15,6 +16,10 @@ app.controller('MainController', function($scope, Query){
     $scope.guessCompare = Query.guessCompare;
 
     $scope.message = '';
+
+    $scope.player = enteredPlayerName;
+
+    $scope.addPlayer = Scores.addPlayer;
     
   });
 
@@ -78,10 +83,11 @@ app.factory('Scores', function($http){
     })
   };
 
-  var addPlayer = function(data){
+  var addPlayer = function(playerInfo){
     return $http({ //#return statement needed here?
       method: "POST",
-      url: '/postScore'
+      url: '/postScore',
+      data: playerInfo
     }).then(function(resp){
       console.log('Post request sent successfully');
       return resp;

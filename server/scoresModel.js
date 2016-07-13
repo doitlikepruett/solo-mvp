@@ -1,9 +1,15 @@
 var mongoose = require('mongoose');
 
 var ScoresSchema = new mongoose.Schema({
-
-  {player: String}, //#Perhaps these need to be together in one object instead of together?
-  {score: Number)
+//#Perhaps these need to be together in one object instead of together?
+  player:{
+    type: String,
+    required:true
+  }, 
+  score:{
+    type: Number,
+    required:true
+  }
 });
 
 
