@@ -9,7 +9,7 @@ app.controller('MainController', function($scope, Query){
 
     $scope.returnResults = Query.returnedResults;
 
-    $scope.allResults = Query.allResults;
+    $scope.allResults = [1,2,3,4,5];
     
     $scope.loadResults = Query.loadResults;
 
@@ -25,6 +25,7 @@ app.controller('MainController', function($scope, Query){
 
     $scope.getScores = Query.getScores;
     
+    $scope.showGuesses = false;
   });
 
 
