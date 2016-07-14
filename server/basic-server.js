@@ -4,7 +4,7 @@ var mongoose = require('mongoose');
 var app = express();
 
 //connect to mongo db named 'suggestionDB'
-mongoose.connect('mongodb://localhost/suggestionDB' || 'mongodb://heroku_g1sph5gs:kabe1vjced31m77ek7np2dfus1@ds037447.mlab.com:37447/heroku_g1sph5gs');
+mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost/suggestionDB');
 
 //add middleware and routing
 require('./middleware.js')(app, express);
