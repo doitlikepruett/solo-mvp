@@ -111,34 +111,3 @@ app.factory('Query', function($http){
     addPlayer: addPlayer
   }
 })
-
-// app.factory('Scores', function($http){
-//   var getScores = function(){
-//     return $http({ //#return statement needed here?
-//       method: "GET",
-//       url: '/allStats'
-//     }).then(function(resp){
-//       return resp.data;
-//     }).catch(function(err){
-//       console.log("There was an error getting the all the scores ", err);
-//     })
-//   };
-
-//   var addPlayer = function(playerInfo){
-//     return $http({ //#return statement needed here?
-//       method: "POST",
-//       url: '/postScore',
-//       data: playerInfo
-//     }).then(function(resp){
-//       console.log('Post request sent successfully');
-//       return resp;
-//     }).catch(function(err){
-//       console.log("Error sending post request ", error);
-//     })
-//   };  
-
-// return {
-//   getScores: getScores,
-//   addPlayer: addPlayer
-// }
-// });

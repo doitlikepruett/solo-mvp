@@ -61,9 +61,10 @@
     <button ng-click='getScores()'>Get All Scores</button>
     <button ng-click='showGuesses = true'>Show All Answers</button>
   </div>
-  <section class='guessList' ng-show="showGuesses === true" ng-init='allResults=allResults'>
+  <section class='guessList' ng-model='allResults'>
+  {{allResults}}
     <li ng-repeat="item in allResults">
-      <h3>{{item | async}}</h3>
+      
     </li>
   </section>
 

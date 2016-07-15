@@ -10,7 +10,7 @@ mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost/suggestionDB');
 require('./middleware.js')(app, express);
 require('./routes.js')(app, express);
 
-var port = process.env.PORT || 5555;
+var port = process.env.PORT || 1347;
 
 app.use(express.static(__dirname + '/../client'));
 
@@ -21,4 +21,4 @@ app.listen(port, function() {
 module.exports  = app
 
 
-// MONGODB_URI: mongodb://heroku_g1sph5gs:kabe1vjced31m77ek7np2dfus1@ds037447.mlab.com:37447/heroku_g1sph5gs
+
