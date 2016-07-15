@@ -1,6 +1,6 @@
 var enteredPlayerName = prompt('Enter a username to play this game');
 
-var app = angular.module('myApp', [])
+var app = angular.module('myApp', ['myApp.stats', 'myApp.congrats', 'ngRoute'])
 
 
 app.controller('MainController', function($scope, Query){
@@ -26,6 +26,8 @@ app.controller('MainController', function($scope, Query){
     $scope.getScores = Query.getScores;
     
     $scope.showGuesses = false;
+
+    
   });
 
 
@@ -111,3 +113,20 @@ app.factory('Query', function($http){
     addPlayer: addPlayer
   }
 })
+
+app.config(function($routeProvider){
+  $routeProvider
+    .when('/stats', {
+      templateUrl: '/stats.html',
+      controller: 'StatsController'
+    })
+    .when('/congrats', {
+      templateUrl: 'congrats.html',
+      controller: 'CongratsController'
+    })
+    .otherwise({
+      redirectTo: '/index.html'
+    });
+})
+
+
